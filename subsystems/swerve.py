@@ -170,6 +170,28 @@ class SwerveModule(Subsystem):
     def get_field_relative_speeds(self) -> ChassisSpeeds:
         return ChassisSpeeds.fromRobotRelativeSpeeds(self.get_robot_relative_speeds(), self.get_angle())
 
+    def robot_centric_drive(self, chassis_speed: ChassisSpeeds, center_of_rotation: Translation2d=Translation2d()) -> None:
+        self.set_module_states(self.kinematics.toSwerveModuleStates(ChassisSpeeds.discertize(chassis_speed, 0.02)))
+
+    def get_robot_relative_speeds(self) -> ChassisSpeeds:
+        return self.kinematics.toChassisSpeeds((self.left_front.get_state(), self.left_rear.get_state(), self.right_front.get_state(), self.right_rear.get_state()))
+    
+    def set_module_states(self, module_states: tuple[SwerveModuleState, SwerveModuleState, SwerveModuleState, SwerveModuleState]) -> None:
+        desatStates = self.kinematics.desaturateWheelSpeeds(module_states, self.max_module_speed)
+
+        self.left_front.set_desired_state(desatStates[0], override_brake_dur_neutral=self.obdn)
+        self.left_rear.set_desired_state(desatStates[1], override_brake_dur_neutral=self.obdn)
+        self.right_front.set_desired_state(desatStates[2], override_brake_dur_neutral=self.obdn)
+        self.right_rear.set_desired_state(desatStates[3], override_brake_dur_neutral=self.obdn)
+    
+    def set_max_module_speed(self, max_module_speed: float=SwerveConstants.k_max_module_speed) -> None:
+        self.max_module_speed = max_module_speed
+    
+    def set_module_override_brake(self, new_obdn: bool) -> None:
+        self.obdn = new_obdn
+    
+    
+
     
 
 def meters_to_rots(meters: float, ratio: float) -> float:
