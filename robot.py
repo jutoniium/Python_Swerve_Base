@@ -11,7 +11,7 @@ from robotcontainer import RobotContainer
 from wpilib import DriverStation, RobotBase
 from wpilib.cameraserver import CameraServer
 
-class WallE(commands2.TimedCommandRobot):
+class Robot(commands2.TimedCommandRobot):
 
     def __init__(self, period: float = TimedRobot.kDefaultPeriod / 1000) -> None:
         super().__init__(period)
