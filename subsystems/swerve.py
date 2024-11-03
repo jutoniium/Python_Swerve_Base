@@ -189,9 +189,7 @@ class SwerveModule(Subsystem):
     
     def set_module_override_brake(self, new_obdn: bool) -> None:
         self.obdn = new_obdn
-    
-    
-
+        
     
 
 def meters_to_rots(meters: float, ratio: float) -> float:
