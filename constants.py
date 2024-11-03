@@ -12,11 +12,6 @@ class MotorIDs:
     RIGHT_FRONT_DIRECTION = 7
     RIGHT_REAR_DIRECTION = 8
     
-    PIVOTMOTOR = 9
-    INTAKEMOTOR = 10
-    
-    LIFTMOTOR_RIGHT = 11
-    LIFTMOTOR_LEFT = 12
     
 class CANIDs:
     LEFT_FRONT = 5
@@ -24,55 +19,22 @@ class CANIDs:
     RIGHT_FRONT = 7
     RIGHT_REAR = 8
 
-class IntakeConstants:
-    GEAR_RATIO = 5
-    INTAKESPEED = 1
-
-class PivotConstants:
-    MM_ACCELERATION = 4
-    MM_CRUISE_VEL = 0.5
-    MM_JERK = 20
-    STOWPOS = 0
-    INTAKEPOS = 0.361
-    SCOREPOSDOWN = 0.268
-    SCOREPOSUP = 0.107 #For scoring up into the amp (yell at Kaylee not me ;-;) 
-
-    K_P = 10
-    K_I = 0
-    K_D = 0.2
-    K_V = 0.12
-    K_S = 0.2
-    GEAR_RATIO = 50
-    SUPPLY_LIMIT = 5
-
-class LiftConstants:
-    CURRENTSUPPLYLIMIT = 25
-    TOPPOSITION = 78.635 # lol big number
-    SCOREPOSITION = 22.254
-    BOTTOMPOSITION = 0
-    GEARRATIO = 12
-    K_P = 1
-    K_I = 0.1
-    MM_ACCEL = 75
-    MM_VEL = 100
 
 class ExternalConstants:
     DRIVERCONTROLLER = 0
     FUNCTIONSCONTROLLER = 1
     TRIGGER_DEADBAND = 0.1
-    
-"""
-SWERVE
-    """
+
     
 class SwerveConstants:
-    k_wheel_size = 0.1 # meters
-    k_max_module_speed = 4.25 # m/s
-    k_max_rot_rate = 5 # rad/s
-    k_drive_base_radius = 0.43 # meters
+    k_wheel_size = 0.1
+    k_max_module_speed = 4.25 
+    k_max_rot_rate = 5 
+    k_drive_base_radius = 0.43
     auto_kP_translation = 7
     auto_kP_rotation = 2.5
     auto_kD_rotation = 0
+
 
 class DriveMotorConstants:
 
